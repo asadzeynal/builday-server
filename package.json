@@ -1,0 +1,23 @@
+{
+  "name": "builday-rest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "basic-auth": "^1.1.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "jsonwebtoken": "^7.4.1",
+    "mongoose": "^4.10.0",
+    "morgan": "^1.8.1",
+    "nodemailer": "^4.0.1",
+    "randomstring": "^1.1.5"
+  }
+}
