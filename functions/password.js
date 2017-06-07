@@ -75,13 +75,12 @@ exports.resetPasswordInit = email =>
                 from: `"${config.name}" <${config.email}>`,
                 to: email,
                 subject: 'Reset Password Request ',
-                html: `Hello ${user.name},
+                html: `Hello ${user.name},<br><br>
 
-                     Your reset password token is <b>${random}</b>.
-                If you are viewing this mail from a Android Device click this <a href="http://learn2crack/${random}">link</a>.
-                The token is valid for only 2 minutes.
+                Your reset password token is <b>${random}</b>.<br>
+                The token is valid for only 2 minutes.<br><br>
 
-                Thanks,
+                Thanks,<br>
                 Agora@Builday.`
 
             };
