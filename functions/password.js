@@ -68,7 +68,7 @@ exports.resetPasswordInit = email =>
 
         .then(user => {
 
-            const transporter = nodemailer.createTransport(`smtps://${config.email}:${config.password}@smtp.gmail.com`);
+            const transporter = nodemailer.createTransport(`smtps://${config.email}:${config.password}@smtp.yandex.ru`);
 
             const mailOptions = {
 
@@ -82,7 +82,7 @@ exports.resetPasswordInit = email =>
                 The token is valid for only 2 minutes.
 
                 Thanks,
-                Learn2Crack.`
+                Agora@Builday.`
 
             };
 
