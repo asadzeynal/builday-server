@@ -17,6 +17,10 @@ const userSchema = mongoose.Schema({
     temp_password_time: String
 });
 
-mongoose.Promise = global.Promise;
+mongoose.Promise = global.Promise; 
 mongoose.connect(dbConnection.dbConnection);
+const db = mongoose.connection;
+
+db.once('open', () => {console.log("Connection to the database established...");});
+
 module.exports = mongoose.model('user', userSchema);

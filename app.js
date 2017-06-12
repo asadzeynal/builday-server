@@ -15,4 +15,4 @@ app.use('/api/v1', router);
 
 app.listen(port);
 
-console.log(`App Runs on ${port}`);
+console.log(`BuilDay server started listening on port ${port}...`);
