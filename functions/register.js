@@ -3,7 +3,7 @@
 const user = require('../models/user');
 const bcrypt = require('bcryptjs');
 
-exports.registerUser = (name, surname, email, password, gender, birthdate) =>
+exports.registerUser = (name, surname, email, password, gender) =>
   new Promise((resolve,reject) => {
 
        const salt = bcrypt.genSaltSync(10);
@@ -13,7 +13,6 @@ exports.registerUser = (name, surname, email, password, gender, birthdate) =>
            name: name,
            surname: surname,
            gender: gender,
-           birthdate: birthdate,
            email: email,
            hashed_password: hash,
            created_at: new Date()
