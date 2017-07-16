@@ -78,25 +78,37 @@ module.exports = router => {
         }
     });
 
+
+
     router.put('/users/:id', (req,res) => {
 
         if (checkToken(req)) {
+            
+            if(!req.body.newPassword){
+                const photo = req.body.mainPhoto;
+                const email = req.params.id;
+                profile.updateProfile(photo, email)
+                .then(result => res.status(result.status).json({ message: result.message }))
+                .then(err => res.status(err.status).json({ message: err.message }));
+                
 
-            const oldPassword = req.body.password;
-            const newPassword = req.body.newPassword;
+            } else {
+                const oldPassword = req.body.password;
+                const newPassword = req.body.newPassword;
 
-            if (!oldPassword || !newPassword || !oldPassword.trim() || !newPassword.trim()) {
+                if (!oldPassword || !newPassword || !oldPassword.trim() || !newPassword.trim()) {
 
                 res.status(400).json({ message: 'Invalid Request !' });
 
-            } else {
+                } else {
 
-                password.changePassword(req.params.id, oldPassword, newPassword)
+                    password.changePassword(req.params.id, oldPassword, newPassword)
 
-                .then(result => res.status(result.status).json({ message: result.message }))
+                    .then(result => res.status(result.status).json({ message: result.message }))
 
-                .catch(err => res.status(err.status).json({ message: err.message }));
+                    .catch(err => res.status(err.status).json({ message: err.message }));
 
+                }
             }
         } else {
 
