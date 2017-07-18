@@ -1,2 +1,3 @@
-config/*
-node_modules/*
+user-service/config/*
+user-service/node_modules/*
+api-gateway/node_modules/*

@@ -1,0 +1,22 @@
+[{
+	"host": "localhost",
+    "port": "4000",
+	"redirects":[{
+		"path": "/authenticate",
+		"method": "post"
+	},
+    {
+		"path": "/users",
+		"method": "post"
+	},
+    {
+        "path": "/users:id",
+        "method": "get"
+    },{
+		"path": "/users:id",
+		"method": "post"
+	},{
+		"path": "/users:id/password",
+		"method": "post"
+	}]
+}]
