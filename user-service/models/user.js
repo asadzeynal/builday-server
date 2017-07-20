@@ -10,11 +10,14 @@ const userSchema = mongoose.Schema({
     surname           : String,
     email             : String,
     gender            : String,
-    mainPhoto        : String,
+    mainPhoto         : String,
     hashed_password   : String,
     created_at        : String,
     temp_password     : String,
-    temp_password_time: String
+    temp_password_time: String,
+    workPlace         : String,
+    yourInterests     : String,
+    yourInfo          : String
 });
 
 mongoose.Promise = global.Promise; 

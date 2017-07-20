@@ -64,7 +64,7 @@ module.exports = router => {
 
     router.get('/users/:id', (req,res) => {
 
-        if (checkToken(req)) {
+        // if (checkToken(req)) {
 
             profile.getProfile(req.params.id)
 
@@ -72,22 +72,21 @@ module.exports = router => {
 
             .catch(err => res.status(err.status).json({ message: err.message }));
 
-        } else {
+        // } else {
 
-            res.status(401).json({ message: 'Invalid Token !' });
-        }
+        //     res.status(401).json({ message: 'Invalid Token !' });
+        // }
     });
 
 
 
     router.put('/users/:id', (req,res) => {
 
-        if (checkToken(req)) {
+        // if (checkToken(req)) {
             
             if(!req.body.newPassword){
-                const photo = req.body.mainPhoto;
                 const email = req.params.id;
-                profile.updateProfile(photo, email)
+                profile.updateProfile(req.body, email)
                 .then(result => res.status(result.status).json({ message: result.message }))
                 .then(err => res.status(err.status).json({ message: err.message }));
                 
@@ -110,10 +109,10 @@ module.exports = router => {
 
                 }
             }
-        } else {
+        // } else {
 
-            res.status(401).json({ message: 'Invalid Token !' });
-        }
+        //     res.status(401).json({ message: 'Invalid Token !' });
+        // }
     });
 
     router.post('/users/:id/password', (req,res) => {
@@ -139,27 +138,4 @@ module.exports = router => {
             .catch(err => res.status(err.status).json({ message: err.message }));
         }
     });
-
-    function checkToken(req) {
-
-        const token = req.headers['x-access-token'];
-
-        if (token) {
-
-            try {
-
-                  var decoded = jwt.verify(token, config.secret);
-
-                  return decoded.message === req.params.id;
-
-            } catch(err) {
-
-                return false;
-            }
-
-        } else {
-
-            return false;
-        }
-    }
 }

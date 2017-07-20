@@ -3,7 +3,6 @@
 const logger = require('morgan');
 const express = require('express');
 const app = express();
-const request = require('request');
 const router = express.Router();
 const port = process.env.PORT || 8080;
 

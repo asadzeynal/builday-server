@@ -14,5 +14,5 @@ require('./routes')(router);
 app.use('/api/v1', router);
 
 app.listen(port, () => {
-    console.log(`BuilDay server started listening on port ${port}...`);
+    console.log(`BuilDay user service started listening on port ${port}...`);
 });
