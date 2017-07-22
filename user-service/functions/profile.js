@@ -21,13 +21,13 @@ exports.getProfile = email =>
         .then(users => {
 
             let user = users[0];
-            if(!body.workPlace){
+            if(body.mainPhoto){
                 user.mainPhoto = body.mainPhoto;
-            }else {
+            }
                 user.workPlace = body.workPlace;
                 user.yourInfo = body.yourInfo;
                 user.yourInterests = body.yourInterests;
-            }
+            // }
             return user.save();
             
         })

@@ -9,9 +9,7 @@ const port        = process.env.PORT || 4000;
 
 app.use(bodyParser.json());
 app.use(logger('dev'));
-
-require('./routes')(router);
-app.use('/api/v1', router);
+app.use('/api/v1', require('./routes')());
 
 app.listen(port, () => {
     console.log(`BuilDay user service started listening on port ${port}...`);

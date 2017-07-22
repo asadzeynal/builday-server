@@ -9,9 +9,10 @@ let _registerRoutes = (routes, method)=>{
        else{
             if(method === 'get'){
                 router.get(key,routes[key]);
-            }
-            else if(method === 'post'){
+            }else if(method === 'post'){
                     router.post(key,routes[key]);
+            }else if(method == 'put'){
+                    router.put(key, routes[key]);
             }
             else{
                 router.use(routes[key]);
