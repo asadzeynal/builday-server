@@ -1,5 +1,4 @@
 'use strict'
-
 const logger = require('morgan');
 const express = require('express');
 const app = express();
