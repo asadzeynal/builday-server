@@ -17,7 +17,8 @@ const userSchema = mongoose.Schema({
     temp_password_time: String,
     workPlace         : String,
     yourInterests     : String,
-    yourInfo          : String
+    yourInfo          : String,
+    statuses          : [String]
 });
 
 mongoose.Promise = global.Promise; 

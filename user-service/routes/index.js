@@ -70,7 +70,7 @@ module.exports = ()=>{
                 .catch(err => res.status(err.status).json({ message: err.message }));
                 }    
             },
-            '/users/:id/password':(req,res,user)=>{
+            '/users/:id/password':(req,res, next)=>{
                 const email = req.params.id;
                 const token = req.body.token;
                 const newPassword = req.body.password;
@@ -91,7 +91,16 @@ module.exports = ()=>{
 
                 .catch(err => res.status(err.status).json({ message: err.message }));
                 }
-            }           
+            },
+            '/users/:id/status': (req, res) => {
+                const email = req.params.id;
+                const status = req.body.status;
+                profile.addStatus(email, status)
+                .then(result => {
+                res.status(result.status).json({ message: result.message })
+            })
+            .catch(err => res.status(err.status).json({ message: err.message })); 
+            }          
         },
         'put':{
             '/users/:id':(req,res,next)=>{

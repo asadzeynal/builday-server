@@ -23,7 +23,7 @@ exports.getProfile = email =>
             let user = users[0];
             if(body.mainPhoto){
                 user.mainPhoto = body.mainPhoto;
-            }
+            }   
                 user.workPlace = body.workPlace;
                 user.yourInfo = body.yourInfo;
                 user.yourInterests = body.yourInterests;
@@ -36,4 +36,15 @@ exports.getProfile = email =>
 
         .catch(err => reject({ status: 500, message: 'Internal Server Error !' }));
 
+    });
+
+    exports.addStatus = (email, status) => new Promise((resolve, reject) => {
+        user.find({ email: email })
+        .then(users => {
+            let user = users[0];
+            user.statuses.push(status);
+            return user.save;
+        })
+        .then(user => resolve({ status : 200, message: 'Status Uploaded Successfully!'}))
+        .catch(err => reject({ status: 500, message: 'Internal Server Error!'}))
     });
