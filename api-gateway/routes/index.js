@@ -15,7 +15,10 @@ module.exports = () =>{
                 }else{
                     res.status(401).json({message : 'Invalid Token !'});
                 }
-            } 
+            },
+            '/users/:id/status/:num': (req, res, next) => {
+                req.pipe(request(config.users + '/users/' + req.params.id + '/status/' + req.params.num)).pipe(res);
+            }
         },
         'post':{
             '/authenticate': (req,res,next)=>{
@@ -26,7 +29,7 @@ module.exports = () =>{
             },
             '/users/:id/password' :(req,res,next)=>{
                 if(checkToken(req)){
-                    req.pipe(request(config.users + '/users/' + req.params.id)).pipe(res);
+                    req.pipe(request(config.users + '/users/' + req.params.id + '/password')).pipe(res);
                 }
                 else{
                     res.status(401).json({message:'Invalid Token !'});
@@ -34,7 +37,7 @@ module.exports = () =>{
             },
             '/users/:id/status' :(req, res, next) => {
                 if(checkToken(req)){
-                    req.pipe(request(config.users + '/users/' + req.params.id + 'status'))
+                    req.pipe(request(config.users + '/users/' + req.params.id + '/status'))
                 }
                 else{
                     res.status(401).json({message:'Invalid Token !'});

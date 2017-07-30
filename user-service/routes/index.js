@@ -22,6 +22,11 @@ module.exports = ()=>{
 
             .catch(err => res.status(err.status).json({ message: err.message }));
    
+            },
+            '/users/:id/status/:num': (req, res) => {
+                profile.getStatus(req.params.id, req.params.num)
+                .then(result => res.json(result))
+                .catch(err => res.status(err.status).json({ message: err.message}));
             }
 
         },
