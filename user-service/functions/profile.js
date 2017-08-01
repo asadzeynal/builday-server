@@ -60,3 +60,10 @@ exports.getProfile = email =>
         })
         .catch(err => reject({ status: 404, message: 'Status not found !' }));
     });
+    exports.getSize = (email) => new Promise((resolve, reject)=>{
+        user.aggregate([{$match: {email: email}}, {$project: {statuses: {$size: '$statuses'}}}])
+        .then(num => {
+            resolve(num[0].statuses);
+        })
+        .catch(err => reject({ status: 404, message: 'ERROR!' }))
+    });

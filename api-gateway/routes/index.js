@@ -18,6 +18,9 @@ module.exports = () =>{
             },
             '/users/:id/status/:num': (req, res, next) => {
                 req.pipe(request(config.users + '/users/' + req.params.id + '/status/' + req.params.num)).pipe(res);
+            },
+            '/users/:id/status/size' : (req, res, next)=>{
+                req.pipe(request(config.users + '/users/' + req.params.id + '/size' )).pipe(res);
             }
         },
         'post':{
