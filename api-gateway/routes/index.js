@@ -40,7 +40,7 @@ module.exports = () =>{
             },
             '/users/:id/status' :(req, res, next) => {
                 if(checkToken(req)){
-                    req.pipe(request(config.users + '/users/' + req.params.id + '/status'))
+                    req.pipe(request(config.users + '/users/' + req.params.id + '/status')).pipe(res);
                 }
                 else{
                     res.status(401).json({message:'Invalid Token !'});
