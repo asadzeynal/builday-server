@@ -107,10 +107,8 @@ module.exports = ()=>{
                 const email = req.params.id;
                 const status = req.body.status;
                 profile.addStatus(email, status)
-                .then(result => {
-                res.status(result.status).json({ message: result.message })
-            })
-            .catch(err => res.status(err.status).json({ message: err.message })); 
+                .then(result => res.status(result.status).json({ message: result.message }))
+                .catch(err => res.status(err.status).json({ message: err.message })); 
             }          
         },
         'put':{
