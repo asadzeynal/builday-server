@@ -27,7 +27,7 @@ module.exports = () =>{
             '/authenticate': (req,res,next)=>{
                 req.pipe(request(config.users + '/authenticate')).pipe(res);
             },
-            '/tokenauth': (req, res, next) => {
+            '/tokenauth/:id': (req, res, next) => {
                 if(checkToken(req)){
                     var token = req.headers['x-access-token'];
                     res.status(200).json({token: token});
