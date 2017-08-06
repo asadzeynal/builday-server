@@ -27,6 +27,13 @@ module.exports = () =>{
             '/authenticate': (req,res,next)=>{
                 req.pipe(request(config.users + '/authenticate')).pipe(res);
             },
+            '/tokenauth': (req, res, next) => {
+                if(checkToken(req)){
+                    res.status(200).json({token: req.headers['x-access-token']});
+                } else{
+                    res.status(401).json({message: "Invalid Token"});
+                }
+            },
             '/users' : (req,res,next)=>{
                 req.pipe(request(config.users+'/users')).pipe(res);    
             },
