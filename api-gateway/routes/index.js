@@ -29,9 +29,10 @@ module.exports = () =>{
             },
             '/tokenauth': (req, res, next) => {
                 if(checkToken(req)){
-                    res.status(200).json({token: req.headers['x-access-token']});
+                    var token = req.headers['x-access-token'];
+                    res.status(200).json({token: token});
                 } else{
-                    res.status(401).json({message: "Invalid Token"});
+                    res.status(401).json({message: 'Invalid Token'});
                 }
             },
             '/users' : (req,res,next)=>{
