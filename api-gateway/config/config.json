@@ -1,4 +1,5 @@
 {
     "secret": "WiguWigu",
-    "users": "http://localhost:4000/api/v1"
+    "users": "http://localhost:4000/api/v1",
+    "events": "http://localhost:4001/api/v1"
 }
