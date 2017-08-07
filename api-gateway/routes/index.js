@@ -56,7 +56,7 @@ module.exports = () =>{
             },
             '/events/upload/:id': (req, res, next) => {
                 if(checkToken(req)){
-                    req.pipe(request(config.events + '/events/upload' + req.params.id)).pipe(res);
+                    req.pipe(request(config.events + '/events/upload/' + req.params.id)).pipe(res);
                 }
                 else{
                     res.status(401).json({message:'Invalid Token !'});
