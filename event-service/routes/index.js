@@ -13,7 +13,7 @@ module.exports = ()=>{
             }
         },
         'post':{
-            'events/upload/:id': (req, res, next) => {
+            '/events/upload/:id': (req, res, next) => {
                 const title = req.body.title;
                 const ownerEmail = req.body.ownerEmail;
                 const usersLimit = req.body.usersLimit;
