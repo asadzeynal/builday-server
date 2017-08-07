@@ -35,7 +35,8 @@ module.exports = ()=>{
                 })
 
                 .catch(err => res.status(err.status).json({ message: err.message }));
-                }                }      
+                }               
+            }      
         }
     }
     return h.route(routes);
