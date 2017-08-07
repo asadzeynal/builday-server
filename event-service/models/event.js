@@ -13,7 +13,6 @@ const eventSchema = mongoose.Schema({
     lat               : Number,
     created_at        : String,
     interest          : String,
-    yourInfo          : String,
     joinedUsers       : [String]
 });
 

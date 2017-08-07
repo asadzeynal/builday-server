@@ -19,7 +19,7 @@ exports.createEvent = (title, ownerEmail, usersLimit, lat, lng, interest) =>
 
        newEvent.save()
 
-       .then(() => resolve({ status: 201, message: 'Event Created Sucessfully' }))
+       .then(() => resolve({ status: 201, message: 'Event Created Sucessfully !' }))
 
        .catch(err => {
 

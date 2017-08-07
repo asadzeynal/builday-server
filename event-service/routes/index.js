@@ -20,7 +20,7 @@ module.exports = ()=>{
                 const lat = req.body.lat;
                 const lng = req.body.lng;
                 const interest = req.body.interest;
-                if (!title || !ownerEmail || !usersLimit || !lat || !lng || !interest|| !title.trim() || !ownerEmail.trim() || !interest.trim) {
+                if (!title || !ownerEmail || !usersLimit || !lat || !lng || !interest|| !title.trim() || !ownerEmail.trim() || !interest.trim()) {
 
                 res.status(400).json({message: 'Invalid Request !'});
 
