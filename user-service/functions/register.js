@@ -8,7 +8,7 @@ exports.registerUser = (name, surname, email, password, gender) =>
 
        const salt = bcrypt.genSaltSync(10);
        const hash = bcrypt.hashSync(password, salt);
-
+       var users =  user.find({email: email});
        const newUser = new user({
            name: name,
            surname: surname,
