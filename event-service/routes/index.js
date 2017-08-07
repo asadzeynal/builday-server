@@ -3,7 +3,7 @@
 const auth = require('basic-auth');
 const jwt = require('jsonwebtoken');
 const create = require('../functions/create');
-const h = require('../helpers');
+const h = require('./helpers');
 
 module.exports = ()=>{
     let routes = {
