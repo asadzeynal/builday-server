@@ -23,7 +23,11 @@ module.exports = ()=>{
             .catch(err => res.status(err.status).json({ message: err.message }));
    
             },
-
+            '/users/user/:id':(req,res,next) => {
+                profile.getOtherUserProfile(req.params.id)
+                .then(result => res.json(result))
+                .catch(err => res.status(err.status).json({ message: err.message }));
+            },
             '/users/:id/status/size':(req, res, next)=>{
                 profile.getSize(req.params.id).
                 then(result => res.json(result))

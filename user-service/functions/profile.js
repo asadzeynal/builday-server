@@ -14,6 +14,17 @@ exports.getProfile = email =>
 
   });
 
+    exports.getOtherUserProfile = email =>
+
+    new Promise((resolve, reject) => {
+
+        user.find({email: email }, {name:1, surname:1})
+
+        .then(users => resolve(users[0]))
+        
+        .catch(err => reject({ status: 500, message: 'Internal Server Error !' }))
+    });
+
   exports.updateProfile = (body, email) => new Promise((resolve, reject) => {
 
         user.find({ email: email })

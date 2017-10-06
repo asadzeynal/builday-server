@@ -16,6 +16,11 @@ module.exports = ()=>{
 
             .catch(err => res.status(err.status).json({ message: err.message }));
    
+            },
+            '/events/:id': (req, res) => {
+                returner.getEvent(req.params.id)
+                .then(result => res.json(result))
+                .catch(err => res.status(err.status).json({ message: err.message }));
             }
         },
         'post':{

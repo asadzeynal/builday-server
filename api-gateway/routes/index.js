@@ -16,6 +16,9 @@ module.exports = () =>{
                     res.status(401).json({message : 'Invalid Token !'});
                 }
             },
+            '/users/user/:id':(req,res,next)=>{
+                req.pipe(request(config.users + '/users/user/'+req.params.id)).pipe(res);
+            },
             '/users/:id/status/:num': (req, res, next) => {
                 req.pipe(request(config.users + '/users/' + req.params.id + '/status/' + req.params.num)).pipe(res);
             },
@@ -24,6 +27,9 @@ module.exports = () =>{
             },
             '/events': (req, res, next) => {
                 req.pipe(request(config.events + '/events')).pipe(res);
+            },
+            '/events/:id': (req, res, next) => {
+                req.pipe(request(config.events + '/events/' + req.params.id)).pipe(res);
             }
         },
         'post':{
