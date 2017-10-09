@@ -14,5 +14,4 @@ exports.getEvent = id =>
      event.find({_id:id})
      .then(events => resolve(events[0]))
      .catch(err => reject({ status: 500, message: 'Internal Server Error !' }))
-     console.log('ObjectId("' + id + '")');
    });

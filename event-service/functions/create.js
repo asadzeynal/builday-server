@@ -30,3 +30,27 @@ exports.createEvent = (title, ownerEmail, usersLimit, lat, lng, interest) =>
            }
        });
    });
+exports.addUserToEvent = (eventID, userID) =>
+  new Promise((resolve,reject) => {
+
+        event.find({_id:eventID})
+
+       .then((events) => {
+            let e = events[0];
+            e.joinedUsers.push(userID);
+            return e.save();
+       })
+        .then(() => resolve({ status: 201, message: 'You Joined Sucessfully !' }))
+
+       .catch(err => {
+
+           if (err.code == 11000) {
+
+               reject({ status: 409, message: 'User Already Exists' });
+
+           } else {
+
+               reject({ status: 500, message: 'Internal Server Error !' });
+           }
+       });
+   });

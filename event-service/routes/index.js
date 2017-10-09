@@ -42,6 +42,17 @@ module.exports = ()=>{
 
                 .catch(err => res.status(err.status).json({ message: err.message }));
                 }               
+            },
+            '/events/:eid/:uid': (req, res, next) => {
+                const userID = req.params.uid;
+                const eventID = req.params.eid;
+                if(!userID.trim() || !eventID.trim()){
+                   res.status(400).json({message: 'Invalid Request !'});
+                } else {
+                    create.addUserToEvent(eventID, userID)
+                    .then(result => { res.status(result.status).json({ message: result.message })})
+                    .catch(err => res.status(err.status).json({ message: err.message }));
+                }
             }      
         }
     }

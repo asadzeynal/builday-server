@@ -70,6 +70,14 @@ module.exports = () =>{
                 else{
                     res.status(401).json({message:'Invalid Token !'});
                 }
+            },
+            '/events/:eid/:id': (req, res, next) => {
+                if(checkToken(req)){
+                    req.pipe(request(config.events + '/events/' + req.params.eid + '/' + req.params.id)).pipe(res);
+                }
+                else{
+                    res.status(401).json({message:'Invalid Token !'});
+                }
             }
         },
         'put':{
