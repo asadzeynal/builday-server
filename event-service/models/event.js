@@ -6,13 +6,15 @@ const dbConnection = require('../config/constants.js');
 const Schema = mongoose.Schema;
 
 const eventSchema = mongoose.Schema({
-    ownerEmail        : String,
-    title             : {type: String, unique: true},
-    usersLimit        : Number,
-    lng               : Number,
-    lat               : Number,
-    created_at        : String,
-    interest          : String,
+    ownerID           : {type: String, required: true},
+    title             : {type: String, required: true},
+    usersLimit        : {type: Number, required: true},
+    lng               : {type: Number, required: true},
+    lat               : {type: Number, required: true},
+    createdAt         : {type: Number, required: true},
+    eventDateTime     : {type: String, required: true},
+    interest          : {type: String, required: true},
+    placeOfInterest   : String,
     joinedUsers       : [String]
 });
 

@@ -2,8 +2,8 @@
 
 const auth = require('basic-auth');
 const jwt = require('jsonwebtoken');
-const create = require('../functions/create.js');
-const returner = require('../functions/returner.js')
+const create = require('../functions/dataManipulation.js');
+const returner = require('../functions/dataAccess.js')
 const h = require('./helpers');
 
 module.exports = ()=>{
