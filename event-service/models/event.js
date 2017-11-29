@@ -15,7 +15,9 @@ const eventSchema = mongoose.Schema({
     eventDateTime     : {type: String, required: true},
     interest          : {type: String, required: true},
     placeOfInterest   : String,
-    joinedUsers       : [String]
+    appliedUserID     : [String],
+    declinedUserID    : [String],
+    acceptedUserID    : [String]
 });
 
 mongoose.Promise = global.Promise; 

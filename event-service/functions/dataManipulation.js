@@ -38,7 +38,7 @@ exports.addUserToEvent = (eventID, userID) =>
 
        .then((events) => {
             let e = events[0];
-            e.joinedUsers.push(userID);
+            e.appliedUserID.push(userID);
             return e.save();
        })
         .then(() => resolve({ status: 201, message: 'You Joined Sucessfully !' }))
