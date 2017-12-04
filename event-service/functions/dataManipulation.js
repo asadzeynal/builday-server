@@ -1,6 +1,7 @@
 'use strict';
 
 const event = require('../models/event');
+const communication = require('../communication/userEventIdSend');
 
 exports.createEvent = (title, ownerEmail, usersLimit, lat, lng, interest) =>
   new Promise((resolve,reject) => {
@@ -39,6 +40,7 @@ exports.addUserToEvent = (eventID, userID) =>
        .then((events) => {
             let e = events[0];
             e.appliedUserID.push(userID);
+            communication.sendEventUser(eventID, userID)
             return e.save();
        })
         .then(() => resolve({ status: 201, message: 'You Joined Sucessfully !' }))
