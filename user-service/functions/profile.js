@@ -78,3 +78,31 @@ exports.getProfile = email =>
         })
         .catch(err => reject({ status: 404, message: 'ERROR!' }))
     });
+
+    exports.addEventToUser = (userID, eventID) =>
+        
+        new Promise((resolve,reject) => {
+            
+                    user.find({email:userID})
+            
+                   .then((users) => {
+                        let u = users[0];
+                        u.appliedEvents.push(eventID);
+                        return u.save();
+                   })
+                    .then(() => resolve({ status: 201, message: 'You Joined Sucessfully !' }))
+            
+                   .catch(err => {
+            
+                       if (err.code == 11000) {
+            
+                           reject({ status: 409, message: 'User Already Exists' });
+            
+                       } else {
+            
+                           reject({ status: 500, message: 'Internal Server Error !' });
+                       }
+        
+            });
+        });
+    

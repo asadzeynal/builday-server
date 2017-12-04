@@ -15,15 +15,15 @@ exports.createEvent = (title, ownerEmail, usersLimit, lat, lng, interest, dateTi
     var day = ymdArray[0];
        const newEvent = new event({
            title: title,
-           ownerEmail: ownerEmail,
+           ownerID: ownerEmail,
            usersLimit: usersLimit,
+           created_at: new Date(),
            lat: lat,
            lng: lng,
            interest: interest,
-           created_at: new Date(),
-           eventDateTime: new Date(year, month, day, hours, mins);
+           eventDateTime: new Date(year, month, day, hours, mins)
        });
-        newEvent.joinedUsers.push(ownerEmail);
+        newEvent.acceptedUserID.push(ownerEmail);
         newEvent.save()
        
        .then(() => resolve({ status: 201, message: 'Event Created Sucessfully !' }))
@@ -48,7 +48,8 @@ exports.addUserToEvent = (eventID, userID) =>
        .then((events) => {
             let e = events[0];
             e.appliedUserID.push(userID);
-            communication.sendEventUser(eventID, userID)
+            communication.sendEventUser(eventID, userID);
+            // console.log(statusCode);
             return e.save();
        })
         .then(() => resolve({ status: 201, message: 'You Joined Sucessfully !' }))

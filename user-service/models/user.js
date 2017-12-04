@@ -19,7 +19,8 @@ const userSchema = mongoose.Schema({
     yourInterests     : String,
     yourInfo          : String,
     statuses          : [String],
-    upcomingEvents    : [String]
+    upcomingEvents    : [String], 
+    appliedEvents     : [String]
 });
 
 mongoose.Promise = global.Promise; 

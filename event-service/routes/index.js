@@ -36,7 +36,7 @@ module.exports = ()=>{
                 res.status(400).json({message: 'Invalid Request !'});
                 } else {
 
-                create.createEvent(title, ownerEmail, usersLimit, lat, lng, interest, dateTimes)
+                create.createEvent(title, ownerEmail, usersLimit, lat, lng, interest, dateTime)
 
                 .then(result => { res.status(result.status).json({ message: result.message })
                 })
