@@ -2,9 +2,16 @@
 
 const event = require('../models/event');
 
-exports.createEvent = (title, ownerEmail, usersLimit, lat, lng, interest) =>
+exports.createEvent = (title, ownerEmail, usersLimit, lat, lng, interest, dateTime) =>
   new Promise((resolve,reject) => {
-
+    var dtArray = dateTime.split(" ");
+    var hoursMinutes = dtArray[1].split(":")
+    var hours = hoursMinutes[0];
+    var mins = hoursMinutes[1];
+    var ymdArray = dtArray[0].split("/");
+    var year = ymdArray[2];
+    var month = ymdArray[1];
+    var day = ymdArray[0];
        const newEvent = new event({
            title: title,
            ownerEmail: ownerEmail,
@@ -12,7 +19,8 @@ exports.createEvent = (title, ownerEmail, usersLimit, lat, lng, interest) =>
            lat: lat,
            lng: lng,
            interest: interest,
-           created_at: new Date()
+           created_at: new Date(),
+           eventDateTime: new Date(year, month, day, hours, mins);
        });
         newEvent.joinedUsers.push(ownerEmail);
         newEvent.save()

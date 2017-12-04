@@ -26,16 +26,17 @@ module.exports = ()=>{
         'post':{
             '/events/upload/:id': (req, res, next) => {
                 const title = req.body.title;
-                const ownerEmail = req.body.ownerEmail;
+                const ownerEmail = req.body.ownerID;
                 const usersLimit = req.body.usersLimit;
                 const lat = req.body.lat;
                 const lng = req.body.lng;
                 const interest = req.body.interest;
-                if (!title || !ownerEmail || !usersLimit || !lat || !lng || !interest|| !title.trim() || !ownerEmail.trim() || !interest.trim()) {
+                const dateTime = req.body.eventDateTime;
+                if (!dateTime || !title || !ownerEmail || !usersLimit || !lat || !lng || !interest|| !title.trim() || !ownerEmail.trim() || !interest.trim()) {
                 res.status(400).json({message: 'Invalid Request !'});
                 } else {
 
-                create.createEvent(title, ownerEmail, usersLimit, lat, lng, interest)
+                create.createEvent(title, ownerEmail, usersLimit, lat, lng, interest, dateTimes)
 
                 .then(result => { res.status(result.status).json({ message: result.message })
                 })
