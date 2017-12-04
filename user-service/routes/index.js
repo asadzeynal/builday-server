@@ -28,13 +28,13 @@ module.exports = ()=>{
                 .then(result => res.json(result))
                 .catch(err => res.status(err.status).json({ message: err.message }));
             },
-            '/users/:id/status/size':(req, res, next)=>{
-                profile.getSize(req.params.id).
+            '/users/:id/event/amount':(req, res, next)=>{
+                profile.getEventAmount(req.params.id).
                 then(result => res.json(result))
                 .catch(err => res.status(err.status).json({message: err.message}));
             },
-            '/users/:id/status/:num': (req, res, next) => {
-                profile.getStatus(req.params.id, req.params.num)
+            '/users/:id/event/:num': (req, res, next) => {
+                profile.getEventFromUser(req.params.id, req.params.num)
                 .then(result => res.json(result))
                 .catch(err => res.status(err.status).json({ message: err.message}));
             }

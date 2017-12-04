@@ -19,11 +19,11 @@ module.exports = () =>{
             '/users/user/:id':(req,res,next)=>{
                 req.pipe(request(config.users + '/users/user/'+req.params.id)).pipe(res);
             },
-            '/users/:id/status/:num': (req, res, next) => {
-                req.pipe(request(config.users + '/users/' + req.params.id + '/status/' + req.params.num)).pipe(res);
+            '/users/:id/event/:num': (req, res, next) => {
+                req.pipe(request(config.users + '/users/' + req.params.id + '/event/' + req.params.num)).pipe(res);
             },
-            '/users/:id/status/size' : (req, res, next)=>{
-                req.pipe(request(config.users + '/users/' + req.params.id + '/size' )).pipe(res);
+            '/users/:id/event/amount' : (req, res, next)=>{
+                req.pipe(request(config.users + '/users/' + req.params.id + '/event/amount' )).pipe(res);
             },
             '/events': (req, res, next) => {
                 req.pipe(request(config.events + '/events')).pipe(res);
