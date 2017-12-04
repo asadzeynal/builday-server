@@ -48,9 +48,10 @@ exports.addUserToEvent = (eventID, userID) =>
        .then((events) => {
             let e = events[0];
             e.appliedUserID.push(userID);
-            communication.sendEventUser(eventID, userID);
-            // console.log(statusCode);
-            return e.save();
+            var res = communication.sendEventUser(eventID, userID);
+            // if(res==201){
+                return e.save();
+            // } 
        })
         .then(() => resolve({ status: 201, message: 'You Joined Sucessfully !' }))
 
