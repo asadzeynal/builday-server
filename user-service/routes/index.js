@@ -53,7 +53,7 @@ module.exports = ()=>{
 
                     .then(result => {
 
-                    const token = jwt.sign(result, config.secret, { expiresIn: 1440 });
+                    const token = jwt.sign(result, config.secret, { expiresIn: 31536000 });
 
                     res.status(result.status).json({ message: result.message, token: token });
 

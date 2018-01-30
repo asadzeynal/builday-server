@@ -19,17 +19,17 @@ exports.registerUser = (name, surname, email, password, gender) =>
 
        newUser.save()
 
-       .then(() => resolve({ status: 201, message: 'User Registered Sucessfully !' }))
+       .then(() => resolve({ status: 201, message: 'User Registered Sucessfully' }))
 
        .catch(err => {
 
            if (err.code == 11000) {
 
-               reject({ status: 409, message: 'User Already Registered !' });
+               reject({ status: 409, message: 'User Already Registered' });
 
            } else {
 
-               reject({ status: 500, message: 'Internal Server Error !' });
+               reject({ status: 500, message: 'Internal Server Error' });
            }
        });
    });
