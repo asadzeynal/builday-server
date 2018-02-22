@@ -17,11 +17,11 @@ exports.createEvent = (title, ownerEmail, usersLimit, lat, lng, interest, dateTi
            title: title,
            ownerID: ownerEmail,
            usersLimit: usersLimit,
-           created_at: new Date(),
+           created_at: new Date().toISOString(),
            lat: lat,
            lng: lng,
            interest: interest,
-           eventDateTime: new Date(year, month, day, hours, mins)
+           eventDateTime: new Date(year, month, day, hours, mins).toISOString()
        });
         newEvent.acceptedUserID.push(ownerEmail);
         newEvent.save()
