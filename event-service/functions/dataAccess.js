@@ -4,7 +4,7 @@ const event = require('../models/event');
 
 exports.returnAllEvents = () =>
   new Promise((resolve,reject) => {
-       event.find({"eventDateTime": {"$gte": new Date().toISOString()
+       event.find({"eventDateTime": {"$gte": new Date().toISOString()}})
        .then(events => resolve(events))
        .catch(err => reject({ status: 500, message: 'Internal Server Error !' }))
    });
