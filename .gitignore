@@ -3,3 +3,4 @@ user-service/node_modules/*
 api-gateway/node_modules/*
 event-service/node_modules/*
 event-service/config/*
+notifications-service/node_modules/*
