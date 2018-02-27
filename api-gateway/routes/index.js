@@ -96,6 +96,9 @@ module.exports = () =>{
                 else{
                     res.status(401).json({message:'Invalid Token !'});
                 }
+            },
+            '/notifications/token/update' : (req, res, next) => {
+                req.pipe(request(config.notifications + '/notifications/token/update')).pipe(res);
             }
         }
 }   
