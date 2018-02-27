@@ -11,7 +11,9 @@ module.exports = ()=>{
             '/notifications/token/update': (req, res, next) => {
                 const email = req.body.email;
                 const fcmToken = req.body.fcmToken;
-                pushAdmin.refreshFCMToken(email, fcmToken);
+                pushAdmin.refreshFCMToken(email, fcmToken)
+                .then(result => res.json(result))
+                .catch(err => res.status(err.status).json({ message: err.message }));
             }
         }
     }
