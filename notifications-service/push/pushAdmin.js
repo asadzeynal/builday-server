@@ -16,6 +16,11 @@ exports.refreshFCMToken = (userEmail, token) =>
 
        .then((users) => {
             var u = users[0];
+              if(u===undefined){
+                u = new userNotification({
+                userID: userEmail,
+              });
+            }
             u.fcmToken = token;
             return u.save();
        })
