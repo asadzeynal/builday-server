@@ -1,14 +1,6 @@
 'use strict'
 
-var admin = require('firebase-admin');
 const userNotification = require('../models/userNotification');
-
-var serviceAccount = require('../config/single-bindery-175816-firebase-adminsdk-cs0uw-b105f1c3aa.json');
-
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://single-bindery-175816.firebaseio.com"
-});
 
 exports.refreshFCMToken = (userEmail, token) =>
   new Promise((resolve,reject) => {
