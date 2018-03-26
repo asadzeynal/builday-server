@@ -4,8 +4,7 @@ const userNotification = require('../models/userNotification');
 
 exports.refreshFCMToken = (userEmail, token) =>
   new Promise((resolve,reject) => {
-        userNotification.find({email:userEmail})
-
+        userNotification.find({userID:userEmail})
        .then((users) => {
             var u = users[0];
               if(u===undefined){
