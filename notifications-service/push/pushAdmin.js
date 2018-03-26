@@ -22,3 +22,14 @@ exports.refreshFCMToken = (userEmail, token) =>
             reject({ status: 500, message: 'Internal Server Error !' });
        });
    });
+
+// exports.sendNotification = (message, userEmail) => {
+//   var message = {
+//     data: {
+//       score: '850',
+//       time: '2:45'
+//     },
+//     token: registrationToken
+//   };
+  
+// }
