@@ -22,13 +22,21 @@ exports.refreshFCMToken = (userEmail, token) =>
        });
    });
 
-// exports.sendNotification = (message, userEmail) => {
-//   var message = {
-//     data: {
-//       score: '850',
-//       time: '2:45'
-//     },
-//     token: registrationToken
-//   };
+exports.sendNotification = (message, userEmail) => {
+  var message = {
+    data: {
+      score: '850',
+      time: '2:45'
+    },
+    token: 'ck9f1bmpnqg:APA91bHzKZyMa_DIeDUjV_e96DLrPK_eUXO9t2ipTtI6NaDdHXSxivNK-rIAqumc39LTV1dRcavEEd6WfNFH0PYmQ3ZIgy-9NpVMrtOmGceIwIOBkFNl85gSuwFzQ7wBexN0mWuakJGp'
+  };
+  admin.messaging().send(message)
+  .then((response) => {
+    // Response is a message ID string.
+    console.log('Successfully sent message:', response);
+  })
+  .catch((error) => {
+    console.log('Error sending message:', error);
+  });
   
-// }
+}
