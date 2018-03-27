@@ -22,35 +22,35 @@ exports.refreshFCMToken = (userEmail, token) =>
        });
    });
 
-   exports.sendNotification = (msg, userEmail) => {
-     userNotification.find({userID:userEmail})
-     .then((users) => {
-       var u = users[0];
-       msg.address = u.fcmToken;
-     }).catch(err => {
-      reject({ status: 500, message: 'Notification token not found!' });
-    });
-    var message = {
-      android: {
-      ttl: 3600 * 1000, // 1 hour in milliseconds
-      priority: 'normal',
-      notification: {
-        title: msg.title,
-        body: msg.body,
-        icon: 'stock_ticker_update',
-        color: '#f45342'
-      }
-    },
-      token: msg.address
-    };
-    admin.messaging().send(message)
-    .then((response) => {
-      // Response is a message ID string.
-      console.log('Successfully sent message:', response);
-    })
-    .catch((error) => {
-      console.log('Error sending message:', error);
-    });
-  
-  }
-  
+exports.sendNotification = (msg, userEmail) => 
+   new Promise((resolve, reject) => {
+      userNotification.find({userID:userEmail})
+        .then((users) => {
+          var u = users[0];
+          if(u === undefined){
+            reject({status:400, message: 'User Notification account not found!'})
+          }
+          msg.address=u.fcmToken;
+          var message = {
+            android: {
+            ttl: 3600 * 1000, // 1 hour in milliseconds
+            priority: 'normal',
+            notification: {
+              title: msg.title,
+              body: msg.body,
+              icon: 'stock_ticker_update',
+              color: '#f45342'
+            }
+          },
+            token: msg.address
+          };
+          admin.messaging().send(message)
+            .then((response) => {
+              // Response is a message ID string.
+              console.log('Successfully sent message:', response);
+              })
+            .catch((error) => {
+              console.log('Error sending message:', error);
+        })
+   })
+})
