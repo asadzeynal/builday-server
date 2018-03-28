@@ -30,6 +30,9 @@ exports.sendNotification = (msg, userEmail) =>
           if(u === undefined){
             reject({status:400, message: 'User Notification account not found!'})
           }
+          var notification = {title:msg.title, body: mng.body, date: new Date().toISOString()};
+          u.notifications.push(notification);
+          u.save();
           msg.address=u.fcmToken;
           var message = {
             android: {

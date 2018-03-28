@@ -8,7 +8,7 @@ const Schema = mongoose.Schema;
 const userNotificationSchema = mongoose.Schema({
     userID            : {type: String, required: true},
     fcmToken          : {type: String, required: false},
-    notifications     : [{ nType: String, message: String, date: Date }]
+    notifications     : [{ title: String, body: String, date: Date }]
 });
 
 mongoose.Promise = global.Promise; 
