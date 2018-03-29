@@ -1,6 +1,7 @@
 'use strict';
 
 var amqp = require('amqplib/callback_api');
+var request = require('request');
 
 
 exports.sendEventUser = (eventID,userID) =>{
@@ -25,6 +26,13 @@ exports.sendEventUser = (eventID,userID) =>{
             console.log("Sent eventId : " +eventID);
             console.log("Sent userId : " + userID);
         });    
+    });
+}
+
+exports.sendNotification = (msg, userID) => {
+    request.post('http://localhost:4004/api/v1/notifications/post', {form: {userID:userID, msg:msg}}, function(err, httpResponse, body){
+        if(err) return 0;
+        else return 1;
     });
 }
 

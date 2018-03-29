@@ -49,9 +49,12 @@ exports.addUserToEvent = (eventID, userID) =>
             let e = events[0];
             e.appliedUserID.push(userID);
             var res = communication.sendEventUser(eventID, userID);
-            // if(res==201){
-                return e.save();
-            // } 
+            var msg = {
+                title: 'Somebody wants to join your event',
+                body: 'A user wants to join your event. Check his profile to see if you want to accept him.'
+            }
+            var send = communication.sendNotification(msg, e.ownerID);
+            return e.save();
        })
         .then(() => resolve({ status: 201, message: 'You Joined Sucessfully !' }))
 
