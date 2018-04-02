@@ -30,7 +30,7 @@ exports.sendEventUser = (eventID,userID) =>{
 }
 
 exports.sendNotification = (msg, userID) => {
-    request.post('http://localhost:4004/api/v1/notifications/post', {form: {userID:userID, msg:msg}}, function(err, httpResponse, body){
+    request.post({url: 'http://localhost:4004/api/v1/notifications/post', form: {msg:msg, userID:userID}}, function(err, httpResponse, body){
         if(err) return 0;
         else return 1;
     });
