@@ -30,10 +30,30 @@ exports.sendEventUser = (eventID,userID) =>{
 }
 
 exports.sendNotification = (msg, userID) => {
-    request.post({url: 'http://localhost:4004/api/v1/notifications/post', form: {msg:msg, userID:userID}}, function(err, httpResponse, body){
-        if(err) return 0;
-        else return 1;
+    // request.post({url: 'http://localhost:4004/api/v1/notifications/post', form: {msg:msg, userID:userID}}, function(err, httpResponse, body){
+    //     if(err) return 0;
+    //     else return 1;
+    // });
+
+    request({
+        url: 'http://localhost:4004/api/v1/notifications/post',
+        method: 'post',
+        timeout: 60 * 1000,
+        body: JSON.stringify({msg:msg, userID:userID})
+    }, function (error, result, body) {
+        if (error) {
+            console.log(error);
+            return 0;
+        } else if (result.statusCode === 500) {
+            console.log('error');
+            return 0;
+        } else {
+            console.log(body);
+            return 1;
+        }
     });
+
+    }
 }
 
 function generateUuid() {
