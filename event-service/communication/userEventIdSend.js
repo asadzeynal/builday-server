@@ -29,7 +29,7 @@ exports.sendEventUser = (eventID,userID) =>{
     });
 }
 
-exports.sendNotification = (msg, userID) => {
+exports.sendNotification = (message, id) => {
     // request.post({url: 'http://localhost:4004/api/v1/notifications/post', form: {msg:msg, userID:userID}}, function(err, httpResponse, body){
     //     if(err) return 0;
     //     else return 1;
@@ -37,9 +37,10 @@ exports.sendNotification = (msg, userID) => {
 
     request({
         url: 'http://localhost:4004/api/v1/notifications/post',
+        headers: {'content-type' : 'application/x-www-form-urlencoded'},
         method: 'post',
         timeout: 60 * 1000,
-        body: JSON.stringify({msg:msg, userID:userID})
+        body: JSON.stringify({msg:message, userID:id})
     }, function (error, result, body) {
         if (error) {
             console.log(error);
@@ -54,7 +55,7 @@ exports.sendNotification = (msg, userID) => {
     });
 
     }
-}
+
 
 function generateUuid() {
     return Math.random().toString() +
