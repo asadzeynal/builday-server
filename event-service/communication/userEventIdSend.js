@@ -37,7 +37,7 @@ exports.sendNotification = (message, id) => {
 
     request({
         url: 'http://localhost:4004/api/v1/notifications/post',
-        headers: {'content-type' : 'application/x-www-form-urlencoded'},
+        headers: {'content-type' : 'application/json'},
         method: 'post',
         timeout: 60 * 1000,
         body: JSON.stringify({msg:message, userID:id})
