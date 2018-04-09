@@ -7,6 +7,7 @@ const logger        = require('morgan');
 const router        = express.Router();
 const port        = process.env.PORT || 4000;
 
+app.use(express.limit('15M'));
 app.use(bodyParser.json());
 app.use(logger('dev'));
 app.use('/api/v1', require('./routes')());
