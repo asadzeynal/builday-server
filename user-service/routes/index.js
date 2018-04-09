@@ -73,16 +73,13 @@ module.exports = ()=>{
                 res.status(400).json({message: 'Invalid Request !'});
 
                } else {
-
                 register.registerUser(name, surname, email, password, gender)
 
-                .then(result => {
-
-                res.setHeader('Location', '/users/'+email);
-                res.status(result.status).json({ message: result.message })
-                })
-
-                .catch(err => res.status(err.status).json({ message: err.message }));
+                    .then(result => {
+                        res.setHeader('Location', '/users/'+email);
+                        res.status(result.status).json({ message: result.message })
+                    })
+                    .catch(err => res.status(err.status).json({ message: err.message }));
                 }    
             },
             '/users/:id/password':(req,res, next)=>{
@@ -91,28 +88,28 @@ module.exports = ()=>{
                 const newPassword = req.body.password;
 
                 if (!token || !newPassword || !token.trim() || !newPassword.trim()) {
-
                 password.resetPasswordInit(email)
-
-                .then(result => res.status(result.status).json({ message: result.message }))
-
-                .catch(err => res.status(err.status).json({ message: err.message }));
-
+                    .then(result => res.status(result.status).json({ message: result.message }))
+                    .catch(err => res.status(err.status).json({ message: err.message }));
                 } else {
-
-                password.resetPasswordFinish(email, token, newPassword)
-
-                .then(result => res.status(result.status).json({ message: result.message }))
-
-                .catch(err => res.status(err.status).json({ message: err.message }));
+                    password.resetPasswordFinish(email, token, newPassword)
+                    .then(result => res.status(result.status).json({ message: result.message }))
+                    .catch(err => res.status(err.status).json({ message: err.message }));
                 }
             },
             '/users/:id/status': (req, res) => {
                 const email = req.params.id;
                 const status = req.body.text;
                 profile.addStatus(email, status)
-                .then(result => res.status(result.status).json({ message: result.message }))
-                .catch(err => res.status(err.status).json({ message: err.message })); 
+                    .then(result => res.status(result.status).json({ message: result.message }))
+                    .catch(err => res.status(err.status).json({ message: err.message })); 
+            },
+            '/users/event/add': (req, res) => {
+                var eventID = req.body.eventID;
+                var userID  = req.body.userID;
+                profile.addEventToUser(userID, eventID)
+                    .then(result => res.status(result.status).json({ message: result.message }))
+                    .catch(err => res.status(err.status).json({ message: err.message })); 
             }          
         },
         'put':{

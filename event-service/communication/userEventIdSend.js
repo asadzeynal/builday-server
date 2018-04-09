@@ -5,27 +5,20 @@ var request = require('request');
 
 
 exports.sendEventUser = (eventID,userID) =>{
-    amqp.connect('amqp://localhost', function(err,conn){
-        conn.createChannel(function(err,ch){
-            // var q = 'eventUserId';
-
-            ch.assertQueue('',{exclusive:true}, (err, q)=>{
-                var corr = generateUuid();
-                ch.consume(q.queue, function(msg) {
-                    if (msg.properties.correlationId == corr) {
-                      console.log(' [.] Got %s', msg.content.toString());
-                      return msg.content.toString();                                            
-                      setTimeout(function() { conn.close(); process.exit(0) }, 500);
-                    }
-                  }, {noAck: true});
-                            
-                  ch.sendToQueue('eventUserID',new Buffer(eventID + " " + userID),  { correlationId: corr, replyTo: q.queue });
-            });
-           
-        
-            console.log("Sent eventId : " +eventID);
-            console.log("Sent userId : " + userID);
-        });    
+    request({
+        url: 'http://localhost:4000/api/v1/users/event/add',
+        headers: {'content-type' : 'application/json'},
+        method: 'post',
+        timeout: 60 * 1000,
+        body: JSON.stringify({userID:userID, eventID:eventID})
+    }, function (error, result, body) {
+        if (error) {
+            console.log(error);
+        } else if (result.statusCode === 500) {
+            console.log('error');
+        } else {
+            console.log(body);
+        }
     });
 }
 
