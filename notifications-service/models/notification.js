@@ -22,4 +22,4 @@ const db = mongoose.connection;
 
 db.once('open', () => {console.log("Connection to the database established...");});
 
-module.exports = mongoose.model('notification', userNotificationSchema);
+module.exports = mongoose.model('notification', notificationSchema);
