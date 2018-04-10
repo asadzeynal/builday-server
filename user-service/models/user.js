@@ -11,6 +11,7 @@ const userSchema = mongoose.Schema({
     email             : {type: String, unique: true},
     gender            : String,
     mainPhoto         : String,
+    mainPhotoSmall    : String,
     hashed_password   : String,
     created_at        : String,
     temp_password     : String,
@@ -20,7 +21,8 @@ const userSchema = mongoose.Schema({
     yourInfo          : String,
     statuses          : [String],
     upcomingEvents    : [String], 
-    appliedEvents     : [String]
+    appliedEvents     : [String],
+    finishedEvents    : [String]
 });
 
 mongoose.Promise = global.Promise; 

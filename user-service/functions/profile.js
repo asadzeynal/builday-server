@@ -1,6 +1,7 @@
 'use strict';
 
 const user = require('../models/user');
+const sharp = require('sharp');
 
 exports.getProfile = email =>
 
@@ -34,6 +35,12 @@ exports.getProfile = email =>
             let user = users[0];
             if(body.mainPhoto){
                 user.mainPhoto = body.mainPhoto;
+                var b64string = body.mainPhoto;
+                var buf = Buffer.from(b64string, 'base64');
+                user.mainPhotoSmall = sharp(inputBuffer)
+                    .resize(240, 240)
+                    .toBuffer()
+                    .toString('base64');
             }   
                 user.workPlace = body.workPlace;
                 user.yourInfo = body.yourInfo;
