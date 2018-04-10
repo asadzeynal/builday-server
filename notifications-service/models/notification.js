@@ -5,7 +5,7 @@ const dbConnection = require('../config/constants.js');
 
 const Schema = mongoose.Schema;
 
-const userNotificationSchema = mongoose.Schema({
+const notificationSchema = mongoose.Schema({
     title            : {type: String, required: true},
     body             : {type: String, required: false},
     type             : {type: Number, required: true},
@@ -22,4 +22,4 @@ const db = mongoose.connection;
 
 db.once('open', () => {console.log("Connection to the database established...");});
 
-module.exports = mongoose.model('userNotification', userNotificationSchema);
+module.exports = mongoose.model('notification', userNotificationSchema);
