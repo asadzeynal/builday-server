@@ -8,11 +8,11 @@ const Schema = mongoose.Schema;
 const userNotificationSchema = mongoose.Schema({
     title            : {type: String, required: true},
     body             : {type: String, required: false},
-    type             : {type: int, required: true},
+    type             : {type: Number, required: true},
     recieverID       : {type: String, required: true},
     eventID          : {type: String, required: false},
     secondUserID     : {type: String, required: false},
-    statusCode       : {type: int, required: true},
+    statusCode       : {type: Number, required: true},
     dateTime         : {type: String, required: true},
 });
 
