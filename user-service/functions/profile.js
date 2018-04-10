@@ -37,10 +37,15 @@ exports.getProfile = email =>
                 user.mainPhoto = body.mainPhoto;
                 var b64string = body.mainPhoto;
                 var buf = Buffer.from(b64string, 'base64');
-                user.mainPhotoSmall = sharp(inputBuffer)
+                sharp(buf)
                     .resize(240, 240)
-                    .toBuffer()
-                    .toString('base64');
+                    .toBuffer(function(err, outputBuffer) {
+                        if (err) {
+                          throw err;
+                        } else {
+                            user.mainPhoto = outputBuffer.toString('base64');
+                        }
+                })
             }   
                 user.workPlace = body.workPlace;
                 user.yourInfo = body.yourInfo;
