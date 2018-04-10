@@ -1,23 +1,22 @@
 'use strict'
 
-const userNotification = require('../models/userNotification');
+const userNotification = require('../models/notification');
 
-// exports. = (userEmail, token) =>
-//   new Promise((resolve,reject) => {
-//         userNotification.find({userID:userEmail})
-//        .then((users) => {
-//             var u = users[0];
-//               if(u===undefined){
-//                 u = new userNotification({
-//                 userID: userEmail,
-//               });
-//             }
-//             u.fcmToken = token;
-//             return u.save();
-//        })
-//         .then(() => resolve({ status: 201, message: 'Token Refreshed Successfully' }))
+exports.getLastXNotifications = (userID, num) =>
+  new Promise((resolve,reject) => {
+        userNotification.find({recieverID:userID})
+       .then((notifications) => {
+            var filtered;
+            if(notifications.length >= num){
+                filtered = notifications.slice(notifications.length - num, notifications.length + 1);
+            } else {
+                filtered = notifications;
+            }
+            resolve(filtered);
+       })
+        .then((array) => resolve(array))
 
-//        .catch(err => {
-//             reject({ status: 500, message: 'Internal Server Error !' });
-//        });
-//    });
+       .catch(err => {
+            reject({ status: 500, message: 'Internal Server Error !' });
+       });
+   });

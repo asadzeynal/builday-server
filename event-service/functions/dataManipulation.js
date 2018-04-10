@@ -50,8 +50,11 @@ exports.addUserToEvent = (eventID, userID) =>
             e.appliedUserID.push(userID);
             var res = communication.sendEventUser(eventID, userID);
             var msg = {
-                title: 'Somebody wants to join your event',
-                body: 'A user wants to join your event. Check his profile to see if you want to accept him.'
+                title: 'Somebody wants to join your event!',
+                body: 'A user wants to join your event. Check his profile to see if you want to accept him.',
+                type: 1, //when someone joins your event,
+                eventID: eventID,
+                secondUserID: userID
             }
             var send = communication.sendNotification(msg, e.ownerID);
             return e.save();

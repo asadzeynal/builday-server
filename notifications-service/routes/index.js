@@ -3,11 +3,19 @@
 const auth = require('basic-auth');
 const jwt = require('jsonwebtoken');
 const pushAdmin = require('../push/pushAdmin.js');
+const regularAdmin = require('../push/regularAdmin.js');
 const h = require('./helpers');
 
 module.exports = ()=>{
     let routes = {
-        'put':{
+        'get': {
+            '/notifications/:id/last/:num': (req, res, next) => {
+                regularAdmin.getLastXNotifications(req.params.id, req.params.num)
+                .then(result => res.json(result))
+                .catch(err => res.status(err.status).json({ message: err.message }));
+            }
+        },
+        'put': {
             '/notifications/token/update': (req, res, next) => {
                 const email = req.body.email;
                 const fcmToken = req.body.fcmToken;

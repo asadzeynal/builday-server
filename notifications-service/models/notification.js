@@ -12,7 +12,8 @@ const userNotificationSchema = mongoose.Schema({
     recieverID       : {type: String, required: true},
     eventID          : {type: String, required: false},
     secondUserID     : {type: String, required: false},
-    
+    statusCode       : {type: int, required: true},
+    dateTime         : {type: String, required: true},
 });
 
 mongoose.Promise = global.Promise; 

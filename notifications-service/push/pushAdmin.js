@@ -1,6 +1,8 @@
 'use strict'
 
 const userNotification = require('../models/userNotification');
+const notification = require('../models/notification');
+
 
 exports.refreshFCMToken = (userEmail, token) =>
   new Promise((resolve,reject) => {
@@ -30,9 +32,17 @@ exports.sendNotification = (msg, userEmail) =>
           if(u === undefined){
             reject({status:400, message: 'User Notification account not found!'})
           }
-          var notification = {title:msg.title, body: msg.body, date: new Date().toISOString()};
-          u.notifications.push(notification);
-          u.save();
+          var n = new notification({
+            title:msg.title,
+            body: msg.body,
+            type: msg.type,
+            recieverID: userEmail,
+            eventID: msg.eventID,
+            secondUserID: msg.userID,
+            statusCode: -2,  // has not seen and reacted
+            dateTime: new Date().toISOString()
+          })
+          n.save();
           msg.address=u.fcmToken;
           var message = {
             android: {
