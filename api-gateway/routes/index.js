@@ -30,6 +30,13 @@ module.exports = () =>{
             },
             '/events/:id': (req, res, next) => {
                 req.pipe(request(config.events + '/events/' + req.params.id)).pipe(res);
+            }, 
+            '/notifications/:id/last/:num' : (req, res, next) => {
+                if(checkToken(req)){
+                    req.pipe(request(config.notifications + '/notifications/' + req.params.id + '/last/' + req.params.num)).pipe(res);
+                }else{
+                    res.status(401).json({message : 'Invalid Token !'});
+                }
             }
         },
         'post':{
