@@ -43,7 +43,7 @@ exports.getProfile = email =>
                         if (err) {
                           throw err;
                         } else {
-                            user.mainPhoto = outputBuffer.toString('base64');
+                            user.mainPhotoSmall = outputBuffer.toString('base64');
                         }
                 })
             }   
