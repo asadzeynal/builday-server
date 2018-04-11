@@ -43,15 +43,15 @@ exports.getProfile = email =>
                         if (err) {
                           throw err;
                         } else {
-                            user.mainPhotoSmall = outputBuffer.toString('base64');
+                            var photoSmall =  outputBuffer.toString('base64');
+                            user.mainPhotoSmall = photoSmall;
                         }
                 })
             }   
-                user.workPlace = body.workPlace;
-                user.yourInfo = body.yourInfo;
-                user.yourInterests = body.yourInterests;
-            // }
-            return user.save();
+            user.workPlace = body.workPlace;
+            user.yourInfo = body.yourInfo;
+            user.yourInterests = body.yourInterests;
+            resolve (user.save());
             
         })
 
