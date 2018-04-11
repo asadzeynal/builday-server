@@ -120,7 +120,7 @@ module.exports = ()=>{
                     const email = req.params.id;
                     profile.updateProfile(req.body, email)
                     .then(result => res.status(result.status).json({ message: result.message }))
-                    .then(err => res.status(err.status).json({ message: err.message }));
+                    .catch(err => res.status(err.status).json({ message: err.message }));
                 
 
                 } else {

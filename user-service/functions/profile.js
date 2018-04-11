@@ -52,7 +52,7 @@ exports.getProfile = email =>
             user.yourInfo = body.yourInfo;
             user.yourInterests = body.yourInterests;
             user.save()
-            
+          
         })
 
         .then(resolve({ status: 200, message: 'Profile Updated Sucessfully !' }))
