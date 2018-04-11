@@ -51,7 +51,7 @@ exports.getProfile = email =>
             user.workPlace = body.workPlace;
             user.yourInfo = body.yourInfo;
             user.yourInterests = body.yourInterests;
-            resolve (user.save());
+            user.save()
             
         })
 
