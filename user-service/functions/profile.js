@@ -45,6 +45,7 @@ exports.getProfile = email =>
                         } else {
                             var photoSmall =  outputBuffer.toString('base64');
                             user.mainPhotoSmall = photoSmall;
+                            user.save();
                         }
                 })
             }   
