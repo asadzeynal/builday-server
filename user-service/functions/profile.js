@@ -55,7 +55,7 @@ exports.getProfile = email =>
             
         })
 
-        .then(user => resolve({ status: 200, message: 'Profile Updated Sucessfully !' }))
+        .then(resolve({ status: 200, message: 'Profile Updated Sucessfully !' }))
 
         .catch(err => reject({ status: 500, message: 'Internal Server Error !' }));
 
