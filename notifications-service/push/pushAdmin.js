@@ -42,7 +42,7 @@ exports.sendNotification = (msg, userEmail) =>
             statusCode: -2,  // has not seen and reacted
             dateTime: new Date().toISOString()
           })
-          nots = notification.find({title: n.title, body: n.body, recieverID:n.recieverID, 
+          var nots = notification.find({title: n.title, body: n.body, recieverID:n.recieverID, 
             type: n.type, eventID: n.eventID, secondUserID:n.secondUserID});
             if(nots[0] !== undefined){
               return;
