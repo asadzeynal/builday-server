@@ -38,7 +38,7 @@ exports.sendNotification = (msg, userEmail) =>
             type: msg.type,
             recieverID: userEmail,
             eventID: msg.eventID,
-            secondUserID: msg.userID,
+            secondUserID: msg.secondUserID,
             statusCode: -2,  // has not seen and reacted
             dateTime: new Date().toISOString()
           })
