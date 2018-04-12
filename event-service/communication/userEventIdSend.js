@@ -23,11 +23,6 @@ exports.sendEventUser = (eventID,userID) =>{
 }
 
 exports.sendNotification = (message, id) => {
-    // request.post({url: 'http://localhost:4004/api/v1/notifications/post', form: {msg:msg, userID:userID}}, function(err, httpResponse, body){
-    //     if(err) return 0;
-    //     else return 1;
-    // });
-
     request({
         url: 'http://localhost:4004/api/v1/notifications/post',
         headers: {'content-type' : 'application/json'},

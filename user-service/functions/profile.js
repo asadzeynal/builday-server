@@ -100,8 +100,10 @@ exports.getProfile = email =>
             
                    .then((users) => {
                         let u = users[0];
-                        u.appliedEvents.push(eventID);
-                        return u.save();
+                        if(contains(u.appliedEvents, eventID)){
+                            u.appliedEvents.push(eventID);
+                            return u.save();
+                        }
                    })
                     .then(() => resolve({ status: 201, message: 'You Joined Sucessfully !' }))
             
@@ -118,4 +120,12 @@ exports.getProfile = email =>
         
             });
         });
-    
+
+function contains(arr, element) {
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i] === element) {
+            return true;
+        }
+    }
+    return false;
+}
