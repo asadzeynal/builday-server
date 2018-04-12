@@ -100,7 +100,7 @@ exports.getProfile = email =>
             
                    .then((users) => {
                         let u = users[0];
-                        if(contains(u.appliedEvents, eventID)){
+                        if(!contains(u.appliedEvents, eventID)){
                             u.appliedEvents.push(eventID);
                             return u.save();
                         }
