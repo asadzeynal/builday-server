@@ -31,14 +31,11 @@ exports.addEventToCreator = (eventID, userID) => {
         body: JSON.stringify({userID:userID, eventID:eventID})
     }, function (error, result, body) {
         if (error) {
-            console.log(error);
-            reject(error);
+            return error;
         } else if (result.statusCode === 500) {
-            console.log('error');
-            reject(error);
+            return error;
         } else {
-            console.log(body);
-            resolve(result);
+            return result;
         }
     });
 }
