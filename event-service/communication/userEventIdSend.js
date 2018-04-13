@@ -23,7 +23,6 @@ exports.sendEventUser = (eventID,userID) =>{
 }
 
 exports.addEventToCreator = (eventID, userID) => {
-    new Promise((resolve,reject) => {
         request({
             url: 'http://localhost:4000/api/v1/users/event/create',
             headers: {'content-type' : 'application/json'},
@@ -32,11 +31,10 @@ exports.addEventToCreator = (eventID, userID) => {
             body: JSON.stringify({userID:userID, eventID:eventID})
         }, function (error, result, body) {
             if (error) {
-                resolve( {status: 500, message: 'Internal Server error !' });
+                return {status: 500, message: 'Internal Server error !' };
             } else {
-                resolve( {status: 201, message: 'Event Created Sucessfully !' });
+                return {status: 201, message: 'Event Created Sucessfully !' };
             }
-        });
     })
 }
 
