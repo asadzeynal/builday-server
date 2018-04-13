@@ -24,10 +24,12 @@ exports.createEvent = (title, ownerEmail, usersLimit, lat, lng, interest, dateTi
            eventDateTime: new Date(year, month, day, hours, mins).toISOString()
        });
         newEvent.acceptedUserID.push(ownerEmail);
-        newEvent.save();
-        var ev = event.find({title: newEvent.title, ownerID: ownerEmail, created_at: newEvent.created_at});
-        communication.addEventToCreator(ev._id, ownerEmail);
-        resolve()
+        newEvent.save()
+        .then(() => {
+            var ev = event.find({title: newEvent.title, ownerID: ownerEmail, created_at: newEvent.created_at});
+            communication.addEventToCreator(ev._id, ownerEmail);
+            resolve()    
+        })
        
        .then(() => resolve({ status: 201, message: 'Event Created Sucessfully !' }))
 
