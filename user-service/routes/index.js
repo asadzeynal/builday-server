@@ -110,7 +110,14 @@ module.exports = ()=>{
                 profile.addEventToUser(userID, eventID)
                     .then(result => res.status(result.status).json({ message: result.message }))
                     .catch(err => res.status(err.status).json({ message: err.message })); 
-            }          
+            },        
+            '/users/event/create': (req, res) => {
+                var eventID = req.body.eventID;
+                var userID  = req.body.userID;
+                profile.addEventToCreator(userID, eventID)
+                    .then(result => res.status(result.status).json({ message: result.message }))
+                    .catch(err => res.status(err.status).json({ message: err.message })); 
+            }   
         },
         'put':{
             '/users/:id':(req,res,next)=>{

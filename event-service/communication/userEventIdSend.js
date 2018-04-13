@@ -22,6 +22,24 @@ exports.sendEventUser = (eventID,userID) =>{
     });
 }
 
+exports.addEventToCreator = (eventID, userID) => {
+    request({
+        url: 'http://localhost:4000/api/v1/users/event/create',
+        headers: {'content-type' : 'application/json'},
+        method: 'post',
+        timeout: 60 * 1000,
+        body: JSON.stringify({userID:userID, eventID:eventID})
+    }, function (error, result, body) {
+        if (error) {
+            console.log(error);
+        } else if (result.statusCode === 500) {
+            console.log('error');
+        } else {
+            console.log(body);
+        }
+    });
+}
+
 exports.sendNotification = (message, id) => {
     request({
         url: 'http://localhost:4004/api/v1/notifications/post',
@@ -43,12 +61,3 @@ exports.sendNotification = (message, id) => {
     });
 
     }
-
-
-function generateUuid() {
-    return Math.random().toString() +
-           Math.random().toString() +
-           Math.random().toString();
-  }
-
-

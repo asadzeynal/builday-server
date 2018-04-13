@@ -121,6 +121,32 @@ exports.getProfile = email =>
             });
         });
 
+    exports.addEventToCreator = (userID, eventID) =>
+        
+        new Promise((resolve,reject) => {
+            
+                    user.find({email:userID})
+            
+                   .then((users) => {
+                        let u = users[0];
+                        u.upcomingEvents.push(eventID);
+                   })
+                    .then(() => resolve({ status: 201, message: 'You Joined Sucessfully !' }))
+            
+                   .catch(err => {
+            
+                       if (err.code == 11000) {
+            
+                           reject({ status: 409, message: 'User Already Exists' });
+            
+                       } else {
+            
+                           reject({ status: 500, message: 'Internal Server Error !' });
+                       }
+        
+            });
+        })
+
 function contains(arr, element) {
     for (var i = 0; i < arr.length; i++) {
         if (arr[i] === element) {
