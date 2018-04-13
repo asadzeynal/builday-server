@@ -1,3 +1,5 @@
+import { resolve } from 'dns';
+
 'use strict';
 
 var amqp = require('amqplib/callback_api');
@@ -32,13 +34,13 @@ exports.addEventToCreator = (eventID, userID) => {
     }, function (error, result, body) {
         if (error) {
             console.log(error);
-            return error;
+            reject(error);
         } else if (result.statusCode === 500) {
             console.log('error');
-            return error;
+            reject(error);
         } else {
             console.log(body);
-            return result;
+            resolve(result);
         }
     });
 }
