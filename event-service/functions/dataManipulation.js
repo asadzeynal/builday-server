@@ -28,7 +28,7 @@ exports.createEvent = (title, ownerEmail, usersLimit, lat, lng, interest, dateTi
         var ev = event.find({title: newEvent.title, ownerID: ownerEmail, created_at: newEvent.created_at});
         communication.addEventToCreator(ev._id, ownerEmail)
        
-       .then(() => resolve({ status: 201, message: 'Event Created Sucessfully !' }))
+       .then((result) => resolve({ status: result.status, message: 'Event Created Sucessfully !' }))
 
        .catch(err => {
 

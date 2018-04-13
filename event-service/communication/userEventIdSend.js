@@ -23,21 +23,23 @@ exports.sendEventUser = (eventID,userID) =>{
 }
 
 exports.addEventToCreator = (eventID, userID) => {
-    request({
-        url: 'http://localhost:4000/api/v1/users/event/create',
-        headers: {'content-type' : 'application/json'},
-        method: 'post',
-        timeout: 60 * 1000,
-        body: JSON.stringify({userID:userID, eventID:eventID})
-    }, function (error, result, body) {
-        if (error) {
-            return error;
-        } else if (result.statusCode === 500) {
-            return error;
-        } else {
-            return result;
-        }
-    });
+    new Promise((resolve,reject) => {
+        request({
+            url: 'http://localhost:4000/api/v1/users/event/create',
+            headers: {'content-type' : 'application/json'},
+            method: 'post',
+            timeout: 60 * 1000,
+            body: JSON.stringify({userID:userID, eventID:eventID})
+        }, function (error, result, body) {
+            if (error) {
+                reject(error);
+            } else if (result.statusCode === 500) {
+                reject(error);
+            } else {
+                resolve(result);
+            }
+        });
+    })
 }
 
 exports.sendNotification = (message, id) => {
