@@ -47,6 +47,9 @@ exports.addUserToEvent = (eventID, userID) =>
 
        .then((events) => {
             let e = events[0];
+            if(contains(e.appliedUserID, userID)){
+                reject();
+            }
             e.appliedUserID.push(userID);
             var res = communication.sendEventUser(eventID, userID);
             var msg = {
@@ -99,3 +102,11 @@ exports.deleteUserFromEvent = (eventID, userID) =>
            }
        });
    });
+   function contains(arr, element) {
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i] === element) {
+            return true;
+        }
+    }
+    return false;
+}
