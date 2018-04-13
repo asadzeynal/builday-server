@@ -25,7 +25,8 @@ exports.createEvent = (title, ownerEmail, usersLimit, lat, lng, interest, dateTi
        });
         newEvent.acceptedUserID.push(ownerEmail);
         newEvent.save();
-        communication.addEventToCreator(newEvent._id, ownerEmail)
+        ev = event.find(newEvent);
+        communication.addEventToCreator(ev._id, ownerEmail)
        
        .then(() => resolve({ status: 201, message: 'Event Created Sucessfully !' }))
 

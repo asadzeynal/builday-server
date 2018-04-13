@@ -32,10 +32,13 @@ exports.addEventToCreator = (eventID, userID) => {
     }, function (error, result, body) {
         if (error) {
             console.log(error);
+            return error;
         } else if (result.statusCode === 500) {
             console.log('error');
+            return error;
         } else {
             console.log(body);
+            return result;
         }
     });
 }
