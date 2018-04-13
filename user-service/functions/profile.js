@@ -130,6 +130,7 @@ exports.getProfile = email =>
                    .then((users) => {
                         let u = users[0];
                         u.upcomingEvents.push(eventID);
+                        u.save();
                    })
                     .then(() => resolve({ status: 201, message: 'You Joined Sucessfully !' }))
             
