@@ -32,11 +32,9 @@ exports.addEventToCreator = (eventID, userID) => {
             body: JSON.stringify({userID:userID, eventID:eventID})
         }, function (error, result, body) {
             if (error) {
-                reject(error);
-            } else if (result.statusCode === 500) {
-                reject(error);
+                resolve( {status: 500, message: 'Internal Server error !' });
             } else {
-                resolve(result);
+                resolve( {status: 201, message: 'Event Created Sucessfully !' });
             }
         });
     })
