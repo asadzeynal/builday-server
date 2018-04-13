@@ -29,7 +29,7 @@ exports.createEvent = (title, ownerEmail, usersLimit, lat, lng, interest, dateTi
         communication.addEventToCreator(ev._id, ownerEmail);
         resolve()
        
-       .then(() => resolve({ status: result.status, message: 'Event Created Sucessfully !' }))
+       .then(() => resolve({ status: 201, message: 'Event Created Sucessfully !' }))
 
        .catch(err => {
 
