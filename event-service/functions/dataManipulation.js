@@ -48,7 +48,7 @@ exports.addUserToEvent = (eventID, userID) =>
        .then((events) => {
             let e = events[0];
             if(contains(e.appliedUserID, userID)){
-                reject();
+                return;
             }
             e.appliedUserID.push(userID);
             var res = communication.sendEventUser(eventID, userID);
