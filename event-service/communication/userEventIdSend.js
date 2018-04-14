@@ -24,6 +24,7 @@ exports.sendEventUser = (eventID,userID) =>{
 }
 
 exports.addEventToCreator = (eventID, userID) => {
+    new Promise((resolve, reject) => {
         requestPromise({
             url: 'http://localhost:4000/api/v1/users/event/create',
             headers: {'content-type' : 'application/json'},
@@ -42,6 +43,7 @@ exports.addEventToCreator = (eventID, userID) => {
     //             return {status: 201, message: 'Event Created Sucessfully !' };
     //         }
     // })
+    });
 }
 
 exports.sendNotification = (message, id) => {
