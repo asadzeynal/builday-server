@@ -1,5 +1,3 @@
-import { resolve } from 'dns';
-
 'use strict';
 
 var amqp = require('amqplib/callback_api');
