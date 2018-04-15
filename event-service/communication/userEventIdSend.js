@@ -30,11 +30,15 @@ exports.addEventToCreator = (eventID, userID) => {
             headers: {'content-type' : 'application/json'},
             method: 'post',
             timeout: 60 * 1000,
-            body: JSON.stringify({userID:userID, eventID:eventID})
+            body: JSON.stringify({userID:userID, eventID:eventID}),
+            JSON:true
         })
-        .then((result, body) => resolve({ status: 201, message: 'You Joined Sucessfully !' }))
+        .then((response) => resolve({ status: 201, message: 'You Joined Sucessfully !' }))
 
-        .catch((err) => reject({ status: 500, message: 'Internal Server Error !' }))
+        .catch((err) => {
+            console.log(err);
+            reject({ status: 500, message: 'Internal Server Error !' })
+        })
         
     //     , function (error, result, body) {
     //         if (error) {
