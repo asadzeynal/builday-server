@@ -111,13 +111,16 @@ exports.deleteUserFromEvent = (eventID, userID) =>
         event.find({_id:eventID})
         .then((events) => {
             var e = events[0];
-            if (e.appliedUserID.indexOf(userID) >= 0){
+            if (contains(e.appliedUserID, userID)){
                 e.acceptedUserID.push(userID);
                 return e.save();
             }
         })
-        .then((event) => {
-            event.appliedUserID.delete(userID);
+        .then((e) => {
+            var ind = e.appliedUserID.indexOf(userID);
+            if(ind > -1){
+                e.appliedUserID.splice(ind);
+            }
             e.save();
         })
         .then(() => {
@@ -143,13 +146,16 @@ exports.declineUserToEvent = (userID, eventID) =>
         event.find({_id:eventID})
         .then((events) => {
             var e = events[0];
-            if (e.appliedUserID.indexOf(userID) >= 0){
+            if (contains(e.appliedUserID, userID)){
                 e.declinedUserID.push(userID);
                 return e.save();
             }
         })
-        .then((event) => {
-            event.appliedUserID.delete(userID);
+        .then((e) => {
+            var ind = e.appliedUserID.indexOf(userID);
+            if(ind > -1){
+                e.appliedUserID.splice(ind);
+            }
             e.save();
         })
         .then(() => {
