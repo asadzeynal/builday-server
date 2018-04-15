@@ -42,7 +42,7 @@ exports.addEventToCreator = (eventID, userID) => {
     });
 }
 
-exports.acceptUserToEvent = (eventID, userID) => {
+exports.acceptUserToEvent = (userID, eventID) => {
     new Promise((resolve, reject) => {
         requestPromise({
             url: 'http://localhost:4000/api/v1/users/event/accept',
@@ -61,7 +61,7 @@ exports.acceptUserToEvent = (eventID, userID) => {
     });
 }
 
-exports.declineUserToEvent = (eventID, userID) => {
+exports.declineUserToEvent = (userID, eventID) => {
     new Promise((resolve, reject) => {
         requestPromise({
             url: 'http://localhost:4000/api/v1/users/event/decline',
