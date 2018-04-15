@@ -86,10 +86,10 @@ module.exports = () =>{
                     res.status(401).json({message:'Invalid Token !'});
                 }
             },
-            'event/acceptUser/:uid/:eid': (req, res, next) => {
+            '/event/acceptUser/:uid/:eid': (req, res, next) => {
                 req.pipe(request(config.events + '/event/acceptUser/' + req.params.uid + '/' + req.params.eid)).pipe(res);
             },
-            'event/declineUser/:uid/:eid': (req, res, next) => {
+            '/event/declineUser/:uid/:eid': (req, res, next) => {
                 req.pipe(request(config.events + '/event/declineUser/' + req.params.uid + '/' + req.params.eid)).pipe(res);
         }
         },
