@@ -105,6 +105,71 @@ exports.deleteUserFromEvent = (eventID, userID) =>
            }
        });
    });
+
+   exports.acceptUserToEvent = (userID, eventID) =>
+   new Promise((resolve, reject) => {
+        event.find({_id:eventID})
+        .then((events) => {
+            var e = events[0];
+            if (e.appliedUserID.indexOf(userID) >= 0){
+                e.acceptedUserID.push(userID);
+                return e.save();
+            }
+        })
+        .then((event) => {
+            event.appliedUserID.delete(userID);
+            e.save();
+        })
+        .then(() => {
+            communication.acceptUserToEvent(userID, eventID);
+        })
+        .then(() => resolve({ status: 201, message: 'You were removed successfully' }))
+
+        .catch(err => {
+
+            if (err.code == 11000) {
+ 
+                reject({ status: 409, message: 'User Already Exists' });
+ 
+            } else {
+ 
+                reject({ status: 500, message: 'Internal Server Error !' });
+            }
+        });
+   });
+
+exports.declineUserToEvent = (userID, eventID) =>
+   new Promise((resolve, reject) => {
+        event.find({_id:eventID})
+        .then((events) => {
+            var e = events[0];
+            if (e.appliedUserID.indexOf(userID) >= 0){
+                e.declinedUserID.push(userID);
+                return e.save();
+            }
+        })
+        .then((event) => {
+            event.appliedUserID.delete(userID);
+            e.save();
+        })
+        .then(() => {
+            communication.declineUserToEvent(userID, eventID);
+        })
+        .then(() => resolve({ status: 201, message: 'You were removed successfully' }))
+        
+        .catch(err => {
+
+            if (err.code == 11000) {
+ 
+                reject({ status: 409, message: 'User Already Exists' });
+ 
+            } else {
+ 
+                reject({ status: 500, message: 'Internal Server Error !' });
+            }
+        });
+   });
+
    function contains(arr, element) {
     for (var i = 0; i < arr.length; i++) {
         if (arr[i] === element) {

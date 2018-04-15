@@ -148,6 +148,55 @@ exports.getProfile = email =>
             });
         })
 
+exports.acceptUserToEvent = (userID, eventID) => 
+    new Promise((resolve, reject) => {
+        user.find({email:userID})
+        .then((users) => {
+            users[0].upcomingEvents.push(eventID);
+            return users[0].save();
+        })
+        .then((user) => {
+            user.appliedEvents.remove(eventID)
+            user.save();
+        })
+        .then(() => resolve({ status: 201, message: 'You were removed successfully' }))
+
+        .catch(err => {
+            
+            if (err.code == 11000) {
+ 
+                reject({ status: 409, message: 'User Already Exists' });
+ 
+            } else {
+ 
+                reject({ status: 500, message: 'Internal Server Error !' });
+            }
+
+     });
+});
+
+exports.declineUserToEvent = (userID, eventID) => 
+    new Promise((resolve, reject) => {
+        user.find({email:userID})
+        .then((users) => {
+            users[0].appliedEvents.remove(eventID)
+            user.save();
+        })
+        .then(() => resolve({ status: 201, message: 'You were removed successfully' }))
+
+        .catch(err => {
+            
+            if (err.code == 11000) {
+ 
+                reject({ status: 409, message: 'User Already Exists' });
+ 
+            } else {
+ 
+                reject({ status: 500, message: 'Internal Server Error !' });
+            }
+
+     });
+});
 function contains(arr, element) {
     for (var i = 0; i < arr.length; i++) {
         if (arr[i] === element) {

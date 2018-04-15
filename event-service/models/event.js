@@ -11,7 +11,7 @@ const eventSchema = mongoose.Schema({
     usersLimit        : {type: Number, required: true},
     lng               : {type: Number, required: true},
     lat               : {type: Number, required: true},
-    created_at         :{type: String, required: true},
+    created_at        : {type: String, required: true},
     eventDateTime     : {type: String, required: true},
     interest          : {type: String, required: true},
     placeOfInterest   : String,

@@ -117,12 +117,24 @@ module.exports = ()=>{
                 profile.addEventToCreator(userID, eventID)
                     .then(result => res.status(result.status).json({ message: result.message }))
                     .catch(err => res.status(err.status).json({ message: err.message })); 
-            }   
+            },
+            '/users/event/accept': (req, res) => {
+                var eventID = req.body.eventID;
+                var userID  = req.body.userID;
+                profile.acceptUserToEvent(userID, eventID)
+                    .then(result => res.status(result.status).json({ message: result.message }))
+                    .catch(err => res.status(err.status).json({ message: err.message })); 
+            },
+            '/users/event/decline': (req, res) => {
+                var eventID = req.body.eventID;
+                var userID  = req.body.userID;
+                profile.declineUserToEvent(userID, eventID)
+                    .then(result => res.status(result.status).json({ message: result.message }))
+                    .catch(err => res.status(err.status).json({ message: err.message })); 
+            }      
         },
         'put':{
-            '/users/:id':(req,res,next)=>{
-                // if (checkToken(req)) {
-            
+            '/users/:id':(req,res,next) => {
                 if(!req.body.newPassword){
                     const email = req.params.id;
                     profile.updateProfile(req.body, email)

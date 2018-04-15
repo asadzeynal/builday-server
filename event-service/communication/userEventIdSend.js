@@ -39,14 +39,44 @@ exports.addEventToCreator = (eventID, userID) => {
             console.log(err);
             reject({ status: 500, message: 'Internal Server Error !' })
         })
-        
-    //     , function (error, result, body) {
-    //         if (error) {
-    //             return {status: 500, message: 'Internal Server error !' };
-    //         } else {
-    //             return {status: 201, message: 'Event Created Sucessfully !' };
-    //         }
-    // })
+    });
+}
+
+exports.acceptUserToEvent = (eventID, userID) => {
+    new Promise((resolve, reject) => {
+        requestPromise({
+            url: 'http://localhost:4000/api/v1/users/event/accept',
+            headers: {'content-type' : 'application/json'},
+            method: 'post',
+            timeout: 60 * 1000,
+            body: JSON.stringify({userID:userID, eventID:eventID}),
+            JSON:true
+        })
+        .then((response) => resolve({ status: 201, message: 'User Accepted Sucessfully !' }))
+
+        .catch((err) => {
+            console.log(err);
+            reject({ status: 500, message: 'Internal Server Error !' })
+        })
+    });
+}
+
+exports.declineUserToEvent = (eventID, userID) => {
+    new Promise((resolve, reject) => {
+        requestPromise({
+            url: 'http://localhost:4000/api/v1/users/event/decline',
+            headers: {'content-type' : 'application/json'},
+            method: 'post',
+            timeout: 60 * 1000,
+            body: JSON.stringify({userID:userID, eventID:eventID}),
+            JSON:true
+        })
+        .then((response) => resolve({ status: 201, message: 'User Declined Sucessfully !' }))
+
+        .catch((err) => {
+            console.log(err);
+            reject({ status: 500, message: 'Internal Server Error !' })
+        })
     });
 }
 

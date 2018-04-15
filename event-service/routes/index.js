@@ -55,6 +55,20 @@ module.exports = ()=>{
                     .catch(err => res.status(err.status).json({ message: err.message }));
                 }
             },
+            'event/acceptUser/:uid/:eid': (req, res, next) => {
+                const userID = req.params.uid;
+                const eventID = req.params.eid;
+                create.acceptUserToEvent(userID, eventID)
+                .then(result => { res.status(result.status).json({ message: result.message })})
+                .catch(err => res.status(err.status).json({ message: err.message }));
+            },
+            'event/declineUser/:uid/:eid': (req, res, next) => {
+                const userID = req.params.uid;
+                const eventID = req.params.eid;
+                create.declineUserToEvent(userID, eventID)
+                .then(result => { res.status(result.status).json({ message: result.message })})
+                .catch(err => res.status(err.status).json({ message: err.message }));
+            }
         },
         'put':{    
           '/events/:eid/:uid': (req, res, next) => {
