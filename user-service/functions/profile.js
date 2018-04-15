@@ -156,7 +156,10 @@ exports.acceptUserToEvent = (userID, eventID) =>
             return users[0].save();
         })
         .then((user) => {
-            user.appliedEvents.remove(eventID)
+            var ind = user.appliedEvents.indexOf(userID);
+            if(ind > -1){
+                user.appliedEvents.splice(ind);
+            }
             user.save();
         })
         .then(() => resolve({ status: 201, message: 'You were removed successfully' }))
@@ -179,7 +182,11 @@ exports.declineUserToEvent = (userID, eventID) =>
     new Promise((resolve, reject) => {
         user.find({email:userID})
         .then((users) => {
-            users[0].appliedEvents.remove(eventID)
+            var user = users[0];
+            var ind = user.appliedEvents.indexOf(userID);
+            if(ind > -1){
+                user.appliedEvents.splice(ind);
+            }
             user.save();
         })
         .then(() => resolve({ status: 201, message: 'You were removed successfully' }))
