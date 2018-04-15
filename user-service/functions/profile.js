@@ -156,7 +156,7 @@ exports.acceptUserToEvent = (userID, eventID) =>
             return users[0].save();
         })
         .then((user) => {
-            var ind = user.appliedEvents.indexOf(userID);
+            var ind = user.appliedEvents.indexOf(eventID);
             if(ind > -1){
                 user.appliedEvents.splice(ind);
             }
