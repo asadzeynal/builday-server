@@ -31,7 +31,7 @@ exports.createEvent = (title, ownerEmail, usersLimit, lat, lng, interest, dateTi
                 MongoClient.connect(config.dbConnection)
                     .then(client => {
                         const events = client.db(eventsDBName).collection('events-stack');
-                        events.insert({'_id':res._id, 'interest': res.interest})
+                        events.insert({'_id':res._id, 'interest': res.interest, 'ownerID': res.ownerID})
                         client.close()
                     })
                 return res;
