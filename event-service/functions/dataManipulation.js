@@ -34,7 +34,7 @@ exports.createEvent = (title, ownerEmail, usersLimit, lat, lng, interest, dateTi
                         events.insert({'_id':res._id, 'interest': res.interest})
                         client.close()
                     })
-                response.save();
+                return res;
             })
         .then((res) => { 
             communication.addEventToCreator(res._id, ownerEmail)
