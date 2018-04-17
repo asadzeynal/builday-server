@@ -39,9 +39,9 @@ function readWriteFile() {
                 })
                 .then((fd) => {
                     client.close();
-                    setTimeout(function() {
-                        readWriteFile();
-                    }, 2000);
+                    // setTimeout(function() {
+                    //     readWriteFile();
+                    // }, 2000);
                 })
                 .catch((err) => {
                     console.log(err);

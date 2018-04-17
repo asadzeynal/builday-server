@@ -14,20 +14,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
+            <state relative-caret-position="810">
               <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="server.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="server.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="21" column="110" lean-forward="true" selection-start-line="21" selection-start-column="110" selection-end-line="21" selection-end-column="110" />
+            <state relative-caret-position="235">
+              <caret line="41" column="24" selection-start-line="41" selection-start-column="24" selection-end-line="43" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -45,8 +45,8 @@
         <option value="$PROJECT_DIR$/files/walking" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/files/shopping" />
-        <option value="$PROJECT_DIR$/server.js" />
         <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/server.js" />
       </list>
     </option>
   </component>
@@ -146,12 +146,12 @@
       <workItem from="1523916294635" duration="11582000" />
       <workItem from="1523968576597" duration="2467000" />
       <workItem from="1523971091733" duration="4711000" />
-      <workItem from="1523981294136" duration="10678000" />
+      <workItem from="1523981294136" duration="11063000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29438000" />
+    <option name="totallyTimeSpent" value="29823000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="36" width="1922" height="1045" extended-state="6" />
@@ -252,13 +252,6 @@
     <entry file="file://$PROJECT_DIR$/files/art">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="21" column="110" lean-forward="true" selection-start-line="21" selection-start-column="110" selection-end-line="21" selection-end-column="110" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/files/shopping">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -268,8 +261,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
+        <state relative-caret-position="810">
           <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="41" column="24" selection-start-line="41" selection-start-column="24" selection-end-line="43" selection-end-column="32" />
         </state>
       </provider>
     </entry>
