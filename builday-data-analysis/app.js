@@ -37,6 +37,7 @@ MongoClient.connect(url)
             })
             .then(() => {
                 events.deleteMany({});
+                process.exit(0);
             })
     })
     .catch(err => {
