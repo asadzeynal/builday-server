@@ -27,7 +27,7 @@ exports.createEvent = (title, ownerEmail, usersLimit, lat, lng, interest, dateTi
        });
         newEvent.acceptedUserID.push(ownerEmail);
         newEvent.save()
-            .then((response) => {
+            .then((res) => {
                 MongoClient.connect(config.dbConnection)
                     .then(client => {
                         const events = client.db(eventsDBName).collection('events-stack');
