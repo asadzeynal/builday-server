@@ -29,7 +29,7 @@ MongoClient.connect(url)
                                 eventID: doc._id,
                                 secondUserID: doc.ownerID
                             }
-                            sendNotificationAboutNewEvent(msg, line);
+                            sendNotificationAboutNewEvent(msg, line, events);
                         }
                     })
                 }
@@ -37,7 +37,7 @@ MongoClient.connect(url)
             .then(() => {
                 return events.deleteMany({});
             })
-            .then((res) => {process.exit()})
+            // .then((res) => {process.exit()})
 
     })
     .catch(err => {
@@ -45,7 +45,7 @@ MongoClient.connect(url)
     });
 
 
-function sendNotificationAboutNewEvent(msg,userID) {
+function sendNotificationAboutNewEvent(msg,userID, events) {
     request({
         url: 'http://ec2-54-159-52-63.compute-1.amazonaws.com:4004/api/v1/notifications/post',
         headers: {'content-type' : 'application/json'},
@@ -55,11 +55,16 @@ function sendNotificationAboutNewEvent(msg,userID) {
         timeout: 60 * 1000,
         body: JSON.stringify({msg:msg, userID:userID})
     })
-        .then((response) => resolve({ status: 201, message: 'User Accepted Sucessfully !' }))
+        .then((response) => {
+            events.deleteMany({});
+            process.exit();
+        })
 
         .catch((err) => {
             console.log(err);
-            reject({ status: 500, message: 'Internal Server Error !' })
+            // reject({ status: 500, message: 'Internal Server Error !' })
+            events.deleteMany({});
+            process.exit();
         })
 }
 

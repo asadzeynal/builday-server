@@ -23,16 +23,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="userEventIdSend.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="userEventIdSend.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/communication/userEventIdSend.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="960">
-              <caret line="64" column="19" selection-start-line="64" selection-start-column="19" selection-end-line="64" selection-end-column="19" />
+            <state relative-caret-position="679">
+              <caret line="54" column="8" lean-forward="true" selection-start-line="54" selection-start-column="8" selection-end-line="59" selection-end-column="10" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dataManipulation.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="dataManipulation.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/functions/dataManipulation.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="510">
@@ -145,12 +145,12 @@
       <workItem from="1523971665620" duration="1392000" />
       <workItem from="1523981261016" duration="3129000" />
       <workItem from="1523991193595" duration="1220000" />
-      <workItem from="1524000205999" duration="819000" />
+      <workItem from="1524000205999" duration="1965000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6560000" />
+    <option name="totallyTimeSpent" value="7706000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="36" width="1922" height="1045" extended-state="6" />
@@ -253,17 +253,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/communication/userEventIdSend.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="960">
-          <caret line="64" column="19" selection-start-line="64" selection-start-column="19" selection-end-line="64" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/functions/dataManipulation.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="34" column="38" lean-forward="true" selection-start-line="34" selection-start-column="38" selection-end-line="34" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/communication/userEventIdSend.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="679">
+          <caret line="54" column="8" lean-forward="true" selection-start-line="54" selection-start-column="8" selection-end-line="59" selection-end-column="10" />
         </state>
       </provider>
     </entry>
