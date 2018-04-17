@@ -1,8 +1,10 @@
 'use strict';
 
 const event = require('../models/event');
+const MongoClient = require('mongodb').MongoClient;
+const eventsDBName = 'builday-events-db';
 const communication = require('../communication/userEventIdSend');
-
+const config = require('../config/constants')
 exports.createEvent = (title, ownerEmail, usersLimit, lat, lng, interest, dateTime) =>
   new Promise((resolve,reject) => {
     var dtArray = dateTime.split(" ");
@@ -25,11 +27,19 @@ exports.createEvent = (title, ownerEmail, usersLimit, lat, lng, interest, dateTi
        });
         newEvent.acceptedUserID.push(ownerEmail);
         newEvent.save()
+            .then((response) => {
+                MongoClient.connect(config.dbConnection)
+                    .then(client => {
+                        const events = client.db(eventsDBName).collection('events-stack');
+                        events.insert({'_id':res._id, 'interest': res.interest})
+                        client.close()
+                    })
+                response.save();
+            })
         .then((res) => { 
             communication.addEventToCreator(res._id, ownerEmail)
         })
-       
-       .then((response) => resolve({ status: 201, message: 'Event Created Sucessfully !' }))
+       .then(() => resolve({ status: 201, message: 'Event Created Sucessfully !' }))
 
        .catch(err => {
 
