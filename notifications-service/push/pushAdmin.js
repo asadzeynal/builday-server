@@ -72,4 +72,11 @@ exports.sendNotification = (msg, userEmail) =>
               console.log('Error sending message:', error);
         })
    })
+          .then(() => {
+              resolve({status: 201, message: 'Notification sent!'})
+          })
+          .catch((err) => {
+              console.log(err);
+              reject({ status: 500, message: 'Internal Server Error !' })
+          })
 })
