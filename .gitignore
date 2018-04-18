@@ -5,3 +5,6 @@ event-service/node_modules/*
 event-service/config/*
 notifications-service/node_modules/*
 notifications-service/config/*
+builday-data-analysis/node_modules/*
+builday-data-analysis/config/*
+builday-data-analysis/files/*
