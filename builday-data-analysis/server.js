@@ -50,7 +50,6 @@ function readWriteFile() {
     })
 }
 
-// setTimeout(readWriteFile, 3000);
+setInterval(readWriteFile, 60000);
 
-readWriteFile();
 
