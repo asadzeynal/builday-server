@@ -17,7 +17,8 @@ function readWriteFile() {
             evnts.toArray()
                 .then((evs) => {
                     for (let event of evs) {
-                        fs.open('./files/' + event.interest.toLowerCase(), 'w', (err, fd) => {
+                        fs.openSync('./files/' + event.interest.toLowerCase(), 'w', (err, fd) => {
+                            fs.closeSync(fd);
                             for (let email of event.appliedUserID) {
                                 let data = fs.readFileSync('./files/' + event.interest.toLowerCase(), 'utf8');
                                 if (data.indexOf(email) === -1) {
@@ -50,6 +51,6 @@ function readWriteFile() {
     })
 }
 
-setInterval(readWriteFile, 60000);
+setInterval(readWriteFile, 2000);
 
 

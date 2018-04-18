@@ -53,6 +53,7 @@ function start() {
                 .then(() => {
                     return events.deleteMany({}, () => {
                         // process.exit(0);
+                        client.close();
                     });
                 })
         })
@@ -64,4 +65,4 @@ function start() {
         });
 }
 
-setInterval(start, 5000);
+setInterval(start, 1000);
